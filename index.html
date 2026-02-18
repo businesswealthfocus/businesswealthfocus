@@ -1356,8 +1356,11 @@ function handleOptIn(formId, successId) {
 
   // Here: connect to your email service
   // e.g. Systeme.io, ConvertKit, Beehiiv API
-  console.log('New opt-in:', { name, email });
-}
+  fetch(https://preview.mailerlite.io/forms/2110679/179758995028838085/share, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body: `fields[name]=${encodeURIComponent(name)}&fields[email]=${encodeURIComponent(email)}`
+});}
 
 // Reset border on focus
 document.querySelectorAll('.field-input').forEach(el => {
