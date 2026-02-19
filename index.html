@@ -1356,7 +1356,7 @@ function handleOptIn(formId, successId) {
 
   // Here: connect to your email service
   // e.g. Systeme.io, ConvertKit, Beehiiv API
-  fetch(https://preview.mailerlite.io/forms/2110679/179758995028838085/share, {
+  fetch('https://assets.mailerlite.com/jsonp/2110679/forms/179758995028838085/subscribe', {  
   method: 'POST',
   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   body: `fields[name]=${encodeURIComponent(name)}&fields[email]=${encodeURIComponent(email)}`
