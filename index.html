@@ -9,36 +9,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 /* =====================================================
-   RUSSELL BRUNSON FUNNEL PAGE — @businesswealthfocus
-   Design: Bold direct-response. High-contrast.
-   Every element engineered to push one action.
+   BWF BRAND LANDING PAGE
+   Colors: #000000 black · #FFFFFF white · #1A8FE3 blue
+   Brunson structure. BWF aesthetic.
 ===================================================== */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 :root {
-  --red:       #D42B2B;
-  --red-dark:  #A81E1E;
-  --red-light: #FF4444;
-  --yellow:    #FFD700;
-  --yellow-2:  #FFC200;
-  --yellow-dk: #CC9900;
-  --dark:      #0D0D0D;
-  --dark-2:    #1A1A1A;
-  --dark-3:    #252525;
-  --mid:       #3A3A3A;
-  --gray:      #888888;
-  --gray-2:    #BBBBBB;
-  --white:     #FFFFFF;
-  --off-white: #F8F6F0;
-  --cream:     #FFF9EC;
-  --green:     #1E7A3C;
-  --green-2:   #25A050;
+  --blue:       #1A8FE3;
+  --blue-dark:  #1270B8;
+  --blue-light: #3AAAF5;
+  --blue-glow:  rgba(26,143,227,0.25);
+  --blue-pale:  rgba(26,143,227,0.08);
+  --black:      #000000;
+  --dark:       #0A0A0A;
+  --dark-2:     #111111;
+  --dark-3:     #1A1A1A;
+  --dark-4:     #222222;
+  --mid:        #333333;
+  --mid-2:      #444444;
+  --gray:       #777777;
+  --gray-2:     #AAAAAA;
+  --gray-3:     #CCCCCC;
+  --white:      #FFFFFF;
+  --off-white:  #F5F5F5;
+  --green:      #1E7A3C;
+  --green-2:    #25A050;
 }
 
 body {
-  background: var(--dark);
+  background: var(--black);
   color: var(--white);
   font-family: 'Lato', sans-serif;
   font-size: 16px;
@@ -48,7 +50,7 @@ body {
 
 /* ── ATTENTION BAR ── */
 .attention-bar {
-  background: var(--red);
+  background: var(--blue);
   padding: 10px 20px;
   text-align: center;
   font-size: 14px;
@@ -56,35 +58,88 @@ body {
   letter-spacing: 0.05em;
   color: var(--white);
   text-transform: uppercase;
-  animation: pulse-bar 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
 }
-.attention-bar span { color: var(--yellow); }
-@keyframes pulse-bar {
-  0%,100% { background: var(--red); }
-  50%      { background: var(--red-dark); }
+.attention-bar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+.attention-bar span { color: var(--black); background: var(--white); padding: 1px 8px; border-radius: 3px; }
+
+/* ── LOGO BAR ── */
+.logo-bar {
+  background: var(--dark-2);
+  border-bottom: 1px solid var(--dark-4);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.logo-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+  background: var(--dark-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  color: var(--blue);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+.logo-text {}
+.logo-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.2;
+}
+.logo-handle {
+  font-size: 12px;
+  color: var(--blue);
+  line-height: 1;
 }
 
-/* ── HEADLINE SECTION ── */
+/* ── HERO ── */
 .hero {
-  background: var(--dark);
-  padding: 48px 20px 0;
+  background: var(--black);
+  padding: 52px 20px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
-
-/* diagonal stripe background */
+/* Blue radial glow behind headline */
 .hero::before {
   content: '';
   position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(26,143,227,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+/* Subtle grid */
+.hero::after {
+  content: '';
+  position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 40px,
-    rgba(255,255,255,0.012) 40px,
-    rgba(255,255,255,0.012) 80px
-  );
+  background-image:
+    linear-gradient(rgba(26,143,227,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,143,227,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
   pointer-events: none;
 }
 
@@ -92,40 +147,51 @@ body {
 
 /* Pre-head */
 .pre-head {
-  display: inline-block;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--yellow);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--blue);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 18px;
-  border-bottom: 2px solid var(--yellow);
-  padding-bottom: 4px;
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+  border: 1px solid rgba(26,143,227,0.35);
+  border-radius: 100px;
+  padding: 6px 16px;
+  background: var(--blue-pale);
   animation: fadeDown 0.5s ease both;
 }
+.pre-head-dot {
+  width: 7px; height: 7px;
+  background: var(--blue);
+  border-radius: 50%;
+  animation: blink 1.5s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-/* Main Headline — Brunson style: big, bold, benefit-first */
+/* Main Headline */
 .headline {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(52px, 9vw, 96px);
+  font-size: clamp(50px, 9vw, 94px);
   line-height: 0.95;
   letter-spacing: 0.02em;
   color: var(--white);
   margin-bottom: 16px;
   animation: fadeDown 0.5s ease 0.1s both;
 }
-.headline .red   { color: var(--red); }
-.headline .yellow{ color: var(--yellow); display: block; }
-.headline .under {
+.headline .blue   { color: var(--blue); }
+.headline .yellow { color: var(--white); display: block; }
+.headline .under  {
   text-decoration: underline;
-  text-decoration-color: var(--red);
+  text-decoration-color: var(--blue);
   text-decoration-thickness: 4px;
 }
 
 /* Sub-headline */
 .sub-head {
   font-family: 'Merriweather', serif;
-  font-size: clamp(17px, 2.5vw, 23px);
+  font-size: clamp(16px, 2.5vw, 22px);
   font-style: italic;
   color: var(--gray-2);
   line-height: 1.55;
@@ -135,16 +201,15 @@ body {
 }
 .sub-head strong { color: var(--white); font-style: normal; }
 
-/* ── HERO DIVIDER ── */
 .hero-divider {
-  width: 80px;
-  height: 4px;
-  background: var(--red);
+  width: 60px;
+  height: 3px;
+  background: var(--blue);
   margin: 0 auto 32px;
   animation: fadeDown 0.5s ease 0.25s both;
 }
 
-/* ── MOCKUP + FORM SPLIT ── */
+/* ── SPLIT ── */
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -158,7 +223,6 @@ body {
   .split-left { display: none; }
 }
 
-/* LEFT: Book mockup */
 .split-left {
   display: flex;
   align-items: center;
@@ -166,11 +230,12 @@ body {
   padding: 20px 20px 0;
 }
 
+/* BOOK MOCKUP */
 .book-3d {
   position: relative;
   width: 240px;
   transform: perspective(1000px) rotateY(-15deg) rotateX(3deg);
-  filter: drop-shadow(-20px 20px 40px rgba(0,0,0,0.7));
+  filter: drop-shadow(-20px 20px 40px rgba(26,143,227,0.3));
   transition: transform 0.4s ease;
   cursor: default;
 }
@@ -178,10 +243,10 @@ body {
   transform: perspective(1000px) rotateY(-8deg) rotateX(1deg) scale(1.04);
 }
 .book-cover-face {
-  background: linear-gradient(160deg, #1A0000 0%, #2D0000 40%, #1A0000 100%);
-  border: 1px solid rgba(255,215,0,0.3);
+  background: linear-gradient(160deg, #000510 0%, #001830 40%, #000510 100%);
+  border: 1px solid rgba(26,143,227,0.4);
   border-radius: 3px 8px 8px 3px;
-  padding: 30px 24px 24px;
+  padding: 28px 22px 22px;
   position: relative;
   overflow: hidden;
 }
@@ -189,52 +254,73 @@ body {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--yellow-dk), var(--yellow), var(--yellow-dk));
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue), var(--blue-light));
 }
 .book-cover-face::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--yellow-dk), var(--yellow), var(--yellow-dk));
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue));
+}
+/* Blue glow inside cover */
+.book-glow {
+  position: absolute;
+  top: 20%;
+  right: -20%;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(26,143,227,0.15), transparent 70%);
+  pointer-events: none;
 }
 .book-spine {
   position: absolute;
   left: 0; top: 0; bottom: 0;
-  width: 18px;
-  background: linear-gradient(to right, #0D0000, #1A0000 60%, #2D0000);
+  width: 16px;
+  background: linear-gradient(to right, #000008, #001020 60%, #001830);
   border-radius: 3px 0 0 3px;
 }
+.book-pages {
+  position: absolute;
+  right: -4px; top: 6px; bottom: 6px;
+  width: 6px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #e8e8e8 0px, #e8e8e8 1px,
+    #cccccc 1px, #cccccc 2px
+  );
+  border-radius: 0 2px 2px 0;
+  opacity: 0.6;
+}
 .book-label {
-  font-family: 'Lato', sans-serif;
   font-size: 9px;
   font-weight: 900;
-  color: var(--yellow);
+  color: var(--blue);
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-bottom: 12px;
-  opacity: 0.85;
+  margin-bottom: 10px;
+  opacity: 0.9;
 }
 .book-main-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 32px;
+  font-size: 30px;
   line-height: 1.0;
   color: var(--white);
   margin-bottom: 4px;
   letter-spacing: 0.03em;
 }
-.book-main-title .yl { color: var(--yellow); }
+.book-main-title .bl { color: var(--blue); }
 .book-divider {
   height: 2px;
-  background: linear-gradient(90deg, var(--yellow), transparent);
-  margin: 12px 0;
+  background: linear-gradient(90deg, var(--blue), transparent);
+  margin: 10px 0;
 }
 .book-steps {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 .book-step {
   display: flex;
@@ -244,10 +330,9 @@ body {
   color: var(--gray-2);
 }
 .book-step-dot {
-  width: 14px;
-  height: 14px;
+  width: 14px; height: 14px;
   border-radius: 50%;
-  background: var(--red);
+  background: var(--blue);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -258,43 +343,31 @@ body {
 }
 .book-bottom {
   font-size: 9px;
-  color: var(--yellow);
+  color: var(--blue);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  opacity: 0.7;
-  border-top: 1px solid rgba(255,215,0,0.2);
-  padding-top: 10px;
+  opacity: 0.8;
+  border-top: 1px solid rgba(26,143,227,0.2);
+  padding-top: 8px;
   margin-top: 4px;
 }
-.book-pages {
-  position: absolute;
-  right: -4px; top: 6px; bottom: 6px;
-  width: 6px;
-  background: repeating-linear-gradient(
-    to bottom,
-    #f0e8d0 0px, #f0e8d0 1px,
-    #d8d0b8 1px, #d8d0b8 2px
-  );
-  border-radius: 0 2px 2px 0;
-  opacity: 0.7;
-}
 
-/* FREE badge over book */
+/* FREE badge */
 .free-badge {
   position: absolute;
   top: -16px;
   right: -16px;
   width: 76px;
   height: 76px;
-  background: var(--yellow);
+  background: var(--blue);
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--dark);
+  color: var(--white);
   animation: spin-badge 8s linear infinite;
-  box-shadow: 0 4px 20px rgba(255,215,0,0.4);
+  box-shadow: 0 4px 24px rgba(26,143,227,0.5);
   z-index: 10;
 }
 .free-badge-text { font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1; }
@@ -306,27 +379,36 @@ body {
   100% { transform: rotate(0deg)   scale(1);    }
 }
 
-/* ── RIGHT: OPT-IN FORM BOX ── */
-.split-right {
-  padding: 20px 20px 0;
-}
+/* ── FORM BOX ── */
+.split-right { padding: 20px 20px 0; }
 
 .form-box {
-  background: var(--off-white);
-  border-radius: 8px;
+  background: var(--dark-2);
+  border-radius: 10px;
   overflow: hidden;
-  border: 3px solid var(--yellow);
-  box-shadow: 0 0 0 6px rgba(255,215,0,0.1), 0 20px 60px rgba(0,0,0,0.5);
+  border: 2px solid var(--blue);
+  box-shadow: 0 0 0 4px rgba(26,143,227,0.1), 0 20px 60px rgba(26,143,227,0.15);
 }
 .form-box-header {
-  background: var(--red);
+  background: var(--blue);
   padding: 18px 24px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.form-box-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: shimmer 2.5s ease-in-out infinite;
 }
 .fbh-line1 {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
-  color: var(--yellow);
+  color: rgba(255,255,255,0.85);
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-bottom: 4px;
@@ -345,65 +427,66 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  background: var(--cream);
-  border: 1px solid rgba(200,150,0,0.3);
-  border-radius: 6px;
+  background: var(--blue-pale);
+  border: 1px solid rgba(26,143,227,0.25);
+  border-radius: 8px;
   padding: 12px 14px;
   margin-bottom: 18px;
 }
 .form-promise-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
-.form-promise-text { font-size: 13px; color: #444; line-height: 1.55; }
-.form-promise-text strong { color: var(--dark); }
+.form-promise-text { font-size: 13px; color: var(--gray-2); line-height: 1.55; }
+.form-promise-text strong { color: var(--white); }
 
 .field-group { margin-bottom: 12px; }
 .field-label {
   display: block;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
-  color: #444;
+  color: var(--gray-2);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   margin-bottom: 5px;
 }
 .field-input {
   width: 100%;
-  border: 2px solid #CCC;
+  border: 2px solid var(--dark-4);
   border-radius: 6px;
   padding: 13px 16px;
   font-family: 'Lato', sans-serif;
   font-size: 15px;
-  color: var(--dark);
-  background: var(--white);
+  color: var(--white);
+  background: var(--dark-3);
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .field-input:focus {
-  border-color: var(--red);
-  box-shadow: 0 0 0 3px rgba(212,43,43,0.12);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(26,143,227,0.15);
 }
-.field-input::placeholder { color: #AAA; }
+.field-input::placeholder { color: var(--gray); }
 
-/* THE BIG CTA BUTTON */
+/* CTA BUTTON */
 .cta-btn {
   width: 100%;
-  background: linear-gradient(180deg, #25C55A 0%, var(--green) 100%);
+  background: var(--blue);
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 18px 24px;
   cursor: pointer;
   margin-top: 4px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 6px 0 #145028, 0 8px 24px rgba(30,122,60,0.4);
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+  box-shadow: 0 6px 0 var(--blue-dark), 0 8px 30px rgba(26,143,227,0.35);
 }
 .cta-btn:hover {
+  background: var(--blue-light);
   transform: translateY(-2px);
-  box-shadow: 0 8px 0 #145028, 0 12px 32px rgba(30,122,60,0.5);
+  box-shadow: 0 8px 0 var(--blue-dark), 0 12px 40px rgba(26,143,227,0.5);
 }
 .cta-btn:active {
   transform: translateY(2px);
-  box-shadow: 0 2px 0 #145028;
+  box-shadow: 0 2px 0 var(--blue-dark);
 }
 .cta-btn::before {
   content: '';
@@ -420,20 +503,20 @@ body {
 }
 .cta-btn-line1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
+  font-size: 26px;
   color: var(--white);
   letter-spacing: 0.05em;
   line-height: 1;
   display: block;
 }
 .cta-btn-line2 {
-  font-size: 12px;
-  color: rgba(255,255,255,0.85);
+  font-size: 11px;
+  color: rgba(255,255,255,0.8);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   display: block;
-  margin-top: 3px;
+  margin-top: 4px;
 }
 .cta-arrow {
   display: inline-block;
@@ -448,7 +531,7 @@ body {
   text-align: center;
   margin-top: 10px;
   font-size: 11px;
-  color: #888;
+  color: var(--gray);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -458,15 +541,16 @@ body {
 /* ── WHAT YOU GET STRIP ── */
 .what-you-get {
   background: var(--dark-2);
-  border-top: 4px solid var(--yellow);
-  padding: 32px 20px;
+  border-top: 3px solid var(--blue);
+  border-bottom: 1px solid var(--dark-4);
+  padding: 28px 20px;
   text-align: center;
 }
 .wyg-inner { max-width: 860px; margin: 0 auto; }
 .wyg-label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
-  color: var(--yellow);
+  color: var(--blue);
   text-transform: uppercase;
   letter-spacing: 0.2em;
   margin-bottom: 20px;
@@ -477,48 +561,44 @@ body {
   gap: 16px;
 }
 @media (max-width: 700px) { .wyg-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 440px) { .wyg-grid { grid-template-columns: 1fr; } }
 .wyg-item { text-align: center; }
-.wyg-icon {
-  font-size: 28px;
-  margin-bottom: 6px;
-  display: block;
-}
+.wyg-icon { font-size: 28px; margin-bottom: 6px; display: block; }
 .wyg-text {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--gray-2);
   line-height: 1.4;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
-.wyg-text strong { display: block; color: var(--white); font-size: 13px; }
+.wyg-text strong { display: block; color: var(--white); font-size: 12px; }
 
-/* ── MAIN BODY ── */
+/* ── BODY ── */
 .body-section {
   max-width: 780px;
   margin: 0 auto;
   padding: 60px 24px;
 }
 
-/* Who this is for */
+/* Who box */
 .who-box {
   background: var(--dark-2);
-  border: 2px solid var(--mid);
-  border-radius: 8px;
+  border: 1px solid var(--dark-4);
+  border-radius: 10px;
   overflow: hidden;
   margin-bottom: 48px;
+  border-top: 3px solid var(--blue);
 }
 .who-header {
   background: var(--dark-3);
   padding: 16px 24px;
-  border-bottom: 2px solid var(--mid);
+  border-bottom: 1px solid var(--dark-4);
 }
 .who-header-text {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 24px;
-  color: var(--yellow);
-  letter-spacing: 0.05em;
+  font-size: 22px;
+  color: var(--blue);
+  letter-spacing: 0.04em;
 }
 .who-body { padding: 24px; }
 .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -532,14 +612,13 @@ body {
   line-height: 1.55;
 }
 .who-check {
-  width: 20px;
-  height: 20px;
+  width: 20px; height: 20px;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--blue);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-size: 10px;
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -554,8 +633,8 @@ body {
   margin-bottom: 6px;
   line-height: 1;
 }
-.section-label .red { color: var(--red); }
-.section-label .yellow { color: var(--yellow); }
+.section-label .blue  { color: var(--blue); }
+.section-label .white { color: var(--white); }
 .section-sub {
   font-size: 15px;
   color: var(--gray);
@@ -565,55 +644,17 @@ body {
 }
 .section-sub strong { color: var(--gray-2); font-style: normal; }
 
-/* The 5 Steps preview */
-.steps-preview { margin-bottom: 48px; }
-.step-row {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 0;
-  margin-bottom: 4px;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.2s;
-}
-.step-row:hover { transform: translateX(4px); }
-.step-row-num {
-  background: var(--red);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  color: var(--white);
-  flex-shrink: 0;
-}
-.step-row-content {
-  background: var(--dark-2);
-  padding: 16px 20px;
-  border-left: none;
-}
-.step-row-title {
-  font-size: 15px;
-  font-weight: 900;
-  color: var(--white);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 3px;
-}
-.step-row-desc { font-size: 13px; color: var(--gray); line-height: 1.5; }
-.step-row-desc strong { color: var(--yellow); }
-
 /* Pain section */
 .pain-section {
   background: var(--dark-2);
-  border-left: 5px solid var(--red);
-  border-radius: 0 8px 8px 0;
+  border-left: 4px solid var(--blue);
+  border-radius: 0 10px 10px 0;
   padding: 24px 28px;
   margin-bottom: 48px;
 }
 .pain-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
+  font-size: 26px;
   color: var(--white);
   margin-bottom: 16px;
   letter-spacing: 0.04em;
@@ -628,7 +669,7 @@ body {
   line-height: 1.55;
 }
 .pain-x {
-  color: var(--red);
+  color: var(--blue);
   font-weight: 900;
   font-size: 16px;
   flex-shrink: 0;
@@ -636,7 +677,47 @@ body {
 }
 .pain-item strong { color: var(--white); }
 
-/* What you'll discover section */
+/* Steps preview */
+.steps-preview { margin-bottom: 48px; }
+.step-row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+.step-row:hover { transform: translateX(4px); }
+.step-row-num {
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.step-row-content {
+  background: var(--dark-2);
+  padding: 16px 20px;
+  border-left: none;
+  border-bottom: 1px solid var(--dark-4);
+}
+.step-row:last-child .step-row-content { border-bottom: none; }
+.step-row-title {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+}
+.step-row-desc { font-size: 13px; color: var(--gray); line-height: 1.5; }
+.step-row-desc strong { color: var(--blue); }
+
+/* Discover grid */
 .discover-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -646,21 +727,21 @@ body {
 @media (max-width: 580px) { .discover-grid { grid-template-columns: 1fr; } }
 .discover-card {
   background: var(--dark-2);
-  border: 1px solid var(--mid);
-  border-radius: 8px;
-  padding: 18px 18px;
+  border: 1px solid var(--dark-4);
+  border-radius: 10px;
+  padding: 20px;
   transition: border-color 0.2s, transform 0.2s;
 }
 .discover-card:hover {
-  border-color: var(--yellow);
+  border-color: var(--blue);
   transform: translateY(-2px);
 }
 .dc-num {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 40px;
-  color: var(--red);
+  color: var(--blue);
   line-height: 1;
-  opacity: 0.4;
+  opacity: 0.3;
   margin-bottom: 4px;
 }
 .dc-title {
@@ -668,14 +749,14 @@ body {
   font-weight: 900;
   color: var(--white);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   margin-bottom: 6px;
   line-height: 1.35;
 }
 .dc-desc { font-size: 13px; color: var(--gray); line-height: 1.55; }
-.dc-desc strong { color: var(--yellow); }
+.dc-desc strong { color: var(--blue); }
 
-/* ── SOCIAL PROOF ── */
+/* Social proof */
 .proof-section { margin-bottom: 48px; }
 .proof-grid {
   display: grid;
@@ -685,12 +766,13 @@ body {
 @media (max-width: 700px) { .proof-grid { grid-template-columns: 1fr; } }
 .proof-card {
   background: var(--dark-2);
-  border: 1px solid var(--mid);
-  border-radius: 8px;
+  border: 1px solid var(--dark-4);
+  border-radius: 10px;
   padding: 20px;
+  border-top: 3px solid var(--blue);
 }
 .proof-stars {
-  color: var(--yellow);
+  color: var(--blue);
   font-size: 16px;
   margin-bottom: 10px;
   letter-spacing: 2px;
@@ -712,59 +794,67 @@ body {
 }
 .proof-author span { color: var(--gray); font-weight: 400; text-transform: none; letter-spacing: 0; }
 
-/* ── URGENCY / SCARCITY ── */
+/* Urgency bar */
 .urgency-bar {
-  background: var(--red);
-  border-radius: 8px;
+  background: var(--blue);
+  border-radius: 10px;
   padding: 20px 24px;
   text-align: center;
   margin-bottom: 32px;
-  animation: pulse-urgency 2s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
 }
-@keyframes pulse-urgency {
-  0%,100% { background: var(--red); }
-  50%      { background: var(--red-dark); }
+.urgency-bar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: shimmer 2.5s ease-in-out infinite;
 }
 .urgency-text {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   color: var(--white);
   letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
 }
-.urgency-text .yellow { color: var(--yellow); }
-.urgency-sub { font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 4px; }
+.urgency-text .bold { color: var(--black); background: var(--white); padding: 0 8px; border-radius: 3px; }
+.urgency-sub { font-size: 13px; color: rgba(255,255,255,0.85); margin-top: 6px; position: relative; z-index: 1; }
 
-/* ── BOTTOM OPT-IN ── */
+/* Bottom opt-in */
 .bottom-optin {
   background: var(--dark-2);
-  border: 3px solid var(--yellow);
-  border-radius: 10px;
+  border: 2px solid var(--blue);
+  border-radius: 12px;
   overflow: hidden;
   margin-bottom: 48px;
-  box-shadow: 0 0 40px rgba(255,215,0,0.1);
+  box-shadow: 0 0 40px rgba(26,143,227,0.1);
 }
 .bo-header {
   background: var(--dark-3);
   padding: 20px 28px;
   text-align: center;
-  border-bottom: 2px solid var(--mid);
+  border-bottom: 1px solid var(--dark-4);
 }
 .bo-header-pre {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
-  color: var(--yellow);
+  color: var(--blue);
   text-transform: uppercase;
   letter-spacing: 0.18em;
   margin-bottom: 6px;
 }
 .bo-header-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 36px;
+  font-size: 34px;
   color: var(--white);
   letter-spacing: 0.04em;
   line-height: 1.1;
 }
-.bo-header-title .red { color: var(--red); }
+.bo-header-title .blue { color: var(--blue); }
 .bo-body { padding: 28px; }
 .bo-value-stack {
   display: flex;
@@ -780,53 +870,58 @@ body {
   background: var(--dark-3);
   border-radius: 6px;
   font-size: 13px;
+  border: 1px solid var(--dark-4);
 }
 .bvs-label { color: var(--gray-2); display: flex; align-items: center; gap: 8px; }
 .bvs-label .icon { font-size: 16px; }
 .bvs-price {
-  font-family: 'Lato', sans-serif;
   font-size: 13px;
   font-weight: 900;
   color: var(--gray);
   text-decoration: line-through;
-  opacity: 0.7;
+  opacity: 0.5;
 }
 .bvs-total {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 14px 16px;
-  background: rgba(255,215,0,0.07);
-  border: 2px solid rgba(255,215,0,0.3);
+  background: var(--blue-pale);
+  border: 2px solid rgba(26,143,227,0.35);
   border-radius: 6px;
   margin-top: 4px;
 }
-.bvs-total-label { font-size: 15px; font-weight: 900; color: var(--white); }
+.bvs-total-label { font-size: 14px; font-weight: 900; color: var(--white); }
 .bvs-total-free {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 32px;
-  color: var(--yellow);
+  color: var(--blue);
   letter-spacing: 0.05em;
 }
 
 .bo-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 @media (max-width: 580px) { .bo-form { grid-template-columns: 1fr; } }
+
 .bo-cta-btn {
   grid-column: 1 / -1;
   width: 100%;
-  background: linear-gradient(180deg, #2DD968 0%, var(--green) 100%);
+  background: var(--blue);
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 20px 28px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 6px 0 #145028, 0 8px 32px rgba(30,122,60,0.35);
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+  box-shadow: 0 6px 0 var(--blue-dark), 0 8px 32px rgba(26,143,227,0.3);
   margin-top: 4px;
 }
-.bo-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 0 #145028, 0 14px 40px rgba(30,122,60,0.5); }
-.bo-cta-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #145028; }
+.bo-cta-btn:hover {
+  background: var(--blue-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 var(--blue-dark), 0 14px 40px rgba(26,143,227,0.5);
+}
+.bo-cta-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--blue-dark); }
 .bo-cta-btn::before {
   content: '';
   position: absolute;
@@ -838,14 +933,14 @@ body {
 }
 .bo-btn-l1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 32px;
+  font-size: 30px;
   color: var(--white);
   letter-spacing: 0.04em;
   display: block;
   line-height: 1;
 }
 .bo-btn-l2 {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   color: rgba(255,255,255,0.85);
   text-transform: uppercase;
@@ -855,12 +950,9 @@ body {
 }
 .bo-micro { text-align: center; margin-top: 12px; font-size: 11px; color: var(--gray); display: flex; align-items: center; justify-content: center; gap: 5px; }
 
-/* ── FAQ ── */
+/* FAQ */
 .faq-section { margin-bottom: 48px; }
-.faq-item {
-  border-bottom: 1px solid var(--dark-3);
-  padding: 16px 0;
-}
+.faq-item { border-bottom: 1px solid var(--dark-4); padding: 16px 0; }
 .faq-q {
   font-size: 15px;
   font-weight: 900;
@@ -872,7 +964,7 @@ body {
   user-select: none;
 }
 .faq-toggle {
-  color: var(--yellow);
+  color: var(--blue);
   font-size: 20px;
   font-weight: 300;
   transition: transform 0.2s;
@@ -890,36 +982,53 @@ body {
 .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
 .faq-item.open .faq-toggle { transform: rotate(45deg); }
 
-/* ── FOOTER ── */
-.page-footer {
-  background: var(--dark-2);
-  border-top: 2px solid var(--dark-3);
-  padding: 28px 20px;
-  text-align: center;
-}
-.footer-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  color: var(--yellow);
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
-}
-.footer-text { font-size: 12px; color: var(--gray); line-height: 1.6; max-width: 500px; margin: 0 auto 12px; }
-.footer-links { font-size: 11px; color: var(--gray); }
-.footer-links a { color: var(--gray); text-decoration: underline; margin: 0 8px; }
-
-/* ── SUCCESS STATE ── */
+/* Success state */
 .success-state {
   display: none;
   text-align: center;
   padding: 28px 24px;
 }
 .ss-icon { font-size: 52px; margin-bottom: 12px; display: block; }
-.ss-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--green-2); letter-spacing: 0.04em; margin-bottom: 6px; }
+.ss-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--blue); letter-spacing: 0.04em; margin-bottom: 6px; }
 .ss-sub { font-size: 14px; color: var(--gray-2); line-height: 1.6; }
-.ss-sub strong { color: var(--yellow); }
+.ss-sub strong { color: var(--blue); }
 
-/* ── ANIMATIONS ── */
+/* Footer */
+.page-footer {
+  background: var(--dark-2);
+  border-top: 1px solid var(--dark-4);
+  padding: 32px 20px;
+  text-align: center;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.footer-logo-circle {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 12px;
+  color: var(--blue);
+}
+.footer-logo-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  color: var(--white);
+  letter-spacing: 0.1em;
+}
+.footer-text { font-size: 12px; color: var(--gray); line-height: 1.6; max-width: 500px; margin: 0 auto 12px; }
+.footer-links { font-size: 11px; color: var(--gray); }
+.footer-links a { color: var(--gray); text-decoration: underline; margin: 0 8px; }
+
+/* Animations */
 @keyframes fadeDown {
   from { opacity: 0; transform: translateY(-20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -931,46 +1040,46 @@ body {
 }
 .reveal.in { opacity: 1; transform: translateY(0); }
 
-/* ── RESPONSIVE ── */
+/* Responsive */
 @media (max-width: 580px) {
   .attention-bar { font-size: 12px; padding: 8px 12px; }
   .hero { padding: 32px 16px 0; }
-  .form-box-header .fbh-line2 { font-size: 22px; }
-  .form-body { padding: 18px 18px 16px; }
   .body-section { padding: 40px 16px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-  ATTENTION BAR — Brunson always opens
-  with a pattern interrupt before the fold
-══════════════════════════════════════ -->
+<!-- ATTENTION BAR -->
 <div class="attention-bar">
   ⚡ <span>FREE DOWNLOAD:</span> The exact roadmap used by thousands escaping the 9-to-5 — yours in 60 seconds
 </div>
 
-<!-- ══════════════════════════════════════
-  HERO — Above the fold
-  Brunson's rule: headline + opt-in must
-  BOTH be visible without scrolling
-══════════════════════════════════════ -->
+<!-- LOGO BAR -->
+<div class="logo-bar">
+  <div class="logo-circle">BWF</div>
+  <div class="logo-text">
+    <div class="logo-name">Business Wealth Focus</div>
+    <div class="logo-handle">@businesswealthfocus</div>
+  </div>
+</div>
+
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
 
-    <!-- Pre-head: calls out the avatar specifically -->
-    <div class="pre-head">For People Tired of Trading Time for Money →</div>
+    <div class="pre-head">
+      <div class="pre-head-dot"></div>
+      For People Tired of Trading Time for Money →
+    </div>
 
-    <!-- MAIN HEADLINE — Big promise, specific number, removes biggest objection -->
     <h1 class="headline">
       FREE Roadmap Reveals The
-      <span class="yellow">Exact 5 Steps</span>
+      <span class="blue">Exact 5 Steps</span>
       To Your First
-      <span class="red under">$3K/Month Online</span>
+      <span class="under">$3K/Month Online</span>
     </h1>
 
-    <!-- Sub-headline: deepens the promise, names the fear, states the mechanism -->
     <p class="sub-head">
       <em>Without quitting your job first, without being an "expert," and without wasting
       months figuring it out the hard way —</em>
@@ -979,7 +1088,6 @@ body {
 
     <div class="hero-divider"></div>
 
-    <!-- SPLIT: Mockup + Form — both above the fold -->
     <div class="split">
 
       <!-- Book Mockup -->
@@ -993,8 +1101,9 @@ body {
             <div class="book-spine"></div>
             <div class="book-pages"></div>
             <div class="book-cover-face">
+              <div class="book-glow"></div>
               <div class="book-label">@businesswealthfocus</div>
-              <div class="book-main-title">The 9-to-5<br><span class="yl">Exit</span><br>Roadmap</div>
+              <div class="book-main-title">The 9-to-5<br><span class="bl">Exit</span><br>Roadmap</div>
               <div class="book-divider"></div>
               <div class="book-steps">
                 <div class="book-step"><div class="book-step-dot">1</div>Pick Your One Thing</div>
@@ -1022,7 +1131,7 @@ body {
               <span class="form-promise-icon">🔒</span>
               <div class="form-promise-text">
                 <strong>100% Free. No credit card. No catch.</strong><br>
-                Enter your details below and I'll send the roadmap directly to your inbox — instantly.
+                Enter your details and I'll send the roadmap directly to your inbox — instantly.
               </div>
             </div>
 
@@ -1051,15 +1160,11 @@ body {
         </div>
       </div>
 
-    </div><!-- /split -->
+    </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-  WHAT YOU GET STRIP
-  Brunson: immediately below hero,
-  reinforce value before they scroll
-══════════════════════════════════════ -->
+<!-- WHAT YOU GET STRIP -->
 <div class="what-you-get">
   <div class="wyg-inner">
     <div class="wyg-label">Inside Your Free Roadmap You'll Get:</div>
@@ -1088,51 +1193,41 @@ body {
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-  BODY COPY
-  Brunson structure:
-  1. Agitate the pain
-  2. Introduce the solution
-  3. Show what's inside
-  4. Social proof
-  5. Urgency
-  6. Second opt-in
-  7. FAQ
-══════════════════════════════════════ -->
+<!-- BODY -->
 <div class="body-section">
 
-  <!-- 1. WHO IT'S FOR -->
+  <!-- WHO IT'S FOR -->
   <div class="who-box reveal">
     <div class="who-header">
       <div class="who-header-text">⚠️ This Is For You If Any Of These Sound Familiar...</div>
     </div>
     <div class="who-body">
       <div class="who-grid">
-        <div class="who-item"><div class="who-check">✓</div><div>You're <strong>stuck in a job</strong> you tolerate (or hate) and you lie awake knowing there has to be a different way</div></div>
+        <div class="who-item"><div class="who-check">✓</div><div>You're <strong>stuck in a job</strong> you tolerate and you lie awake knowing there has to be a different way</div></div>
         <div class="who-item"><div class="who-check">✓</div><div>You've <strong>thought about starting something online</strong> but don't know what to do or where to begin</div></div>
-        <div class="who-item"><div class="who-check">✓</div><div>You're scared to <strong>quit before you have income</strong> — and every "guru" just tells you to leap and build the parachute on the way down</div></div>
+        <div class="who-item"><div class="who-check">✓</div><div>You're scared to <strong>quit before you have income</strong> — every guru just tells you to leap and build the parachute on the way down</div></div>
         <div class="who-item"><div class="who-check">✓</div><div>You've tried things before — a course, a side hustle, an idea — <strong>but never made it to consistent income</strong></div></div>
-        <div class="who-item"><div class="who-check">✓</div><div>You <strong>don't have hours to spare</strong> each day — you need something that works around your job, family, and actual life</div></div>
-        <div class="who-item"><div class="who-check">✓</div><div>You want <strong>real frameworks and a real plan</strong> — not vague motivation or theoretical advice that doesn't work in practice</div></div>
+        <div class="who-item"><div class="who-check">✓</div><div>You <strong>don't have hours to spare</strong> — you need something that works around your job, family, and actual life</div></div>
+        <div class="who-item"><div class="who-check">✓</div><div>You want <strong>real frameworks and a real plan</strong> — not vague motivation that doesn't work in practice</div></div>
       </div>
     </div>
   </div>
 
-  <!-- 2. PAIN AGITATION -->
+  <!-- PAIN -->
   <div class="pain-section reveal">
     <div class="pain-title">Here's What Nobody Tells You About Escaping The 9-to-5:</div>
     <div class="pain-list">
-      <div class="pain-item"><span class="pain-x">✗</span><div>It's not about <strong>finding the perfect business idea</strong> — most people who obsess over "the idea" never start at all</div></div>
-      <div class="pain-item"><span class="pain-x">✗</span><div>It's not about <strong>quitting your job and betting everything</strong> on a hope — that approach fails 80% of the time and creates financial panic</div></div>
-      <div class="pain-item"><span class="pain-x">✗</span><div>It's not about <strong>building a massive following first</strong> — you can reach $3K/month with zero followers if you're talking to the right people</div></div>
-      <div class="pain-item"><span class="pain-x">✗</span><div>It's not about <strong>working 4 hours a day</strong> from a beach in Bali — that's not a strategy, it's a fantasy sold by people who make money selling the fantasy</div></div>
+      <div class="pain-item"><span class="pain-x">✗</span><div>It's not about <strong>finding the perfect business idea</strong> — people who obsess over the idea never start</div></div>
+      <div class="pain-item"><span class="pain-x">✗</span><div>It's not about <strong>quitting and betting everything</strong> — that approach fails 80% of the time and creates financial panic</div></div>
+      <div class="pain-item"><span class="pain-x">✗</span><div>It's not about <strong>building a massive following first</strong> — you can reach $3K/month with zero followers</div></div>
+      <div class="pain-item"><span class="pain-x">✗</span><div>It's not about <strong>working 4 hours a day from a beach</strong> — that's a fantasy sold by people who profit from selling the fantasy</div></div>
     </div>
   </div>
 
-  <!-- 3. WHAT'S INSIDE — Discovery section -->
+  <!-- STEPS -->
   <div class="reveal" style="margin-bottom:12px;">
-    <div class="section-label">Here's <span class="yellow">Exactly</span> What You'll <span class="red">Discover</span></div>
-    <div class="section-sub">Inside The Free 9-to-5 Exit Roadmap — <strong>every page is built around one question: "what do I actually do next?"</strong></div>
+    <div class="section-label">Here's <span class="blue">Exactly</span> What You'll Discover</div>
+    <div class="section-sub">Inside The Free 9-to-5 Exit Roadmap — <strong>every page answers one question: "what do I actually do next?"</strong></div>
   </div>
 
   <div class="steps-preview reveal">
@@ -1140,99 +1235,99 @@ body {
       <div class="step-row-num">1</div>
       <div class="step-row-content">
         <div class="step-row-title">Pick Your One Thing — The Niche Decision Made Simple</div>
-        <div class="step-row-desc">The exact 3-filter test that tells you whether your niche will make money <strong>before you waste months on the wrong one.</strong> Plus: the 6 beginner-friendly income models ranked by how fast you'll see your first dollar.</div>
+        <div class="step-row-desc">The exact 3-filter test that tells you whether your niche will make money <strong>before you waste months on the wrong one.</strong></div>
       </div>
     </div>
     <div class="step-row">
       <div class="step-row-num">2</div>
       <div class="step-row-content">
         <div class="step-row-title">Build Your Minimum Viable Offer — Without a Website or Logo</div>
-        <div class="step-row-desc">The offer formula that turns your skill into something people will pay for — in a single sentence. <strong>You'll have a working offer in 20 minutes</strong>, not 3 weeks.</div>
+        <div class="step-row-desc">The offer formula that turns your skill into something people pay for — in a single sentence. <strong>Done in 20 minutes.</strong></div>
       </div>
     </div>
     <div class="step-row">
       <div class="step-row-num">3</div>
       <div class="step-row-content">
         <div class="step-row-title">Get Your First 3 Paying Customers — Using People You Already Know</div>
-        <div class="step-row-desc">The exact word-for-word script for reaching out to your warm network. <strong>Most people get their first client within 7–14 days</strong> of sending these messages — without ads, without followers, without a portfolio.</div>
+        <div class="step-row-desc">The word-for-word script. <strong>Most people land their first client within 7–14 days</strong> of sending these messages.</div>
       </div>
     </div>
     <div class="step-row">
       <div class="step-row-num">4</div>
       <div class="step-row-content">
         <div class="step-row-title">Build the System That Finds You Clients — On Autopilot</div>
-        <div class="step-row-desc">The one acquisition channel that fits your life and runs while you're at work. <strong>The 90-day rule that separates</strong> people who build real income from people who give up too early.</div>
+        <div class="step-row-desc">The one acquisition channel that fits your life and runs while you're at work. <strong>The 90-day rule</strong> that separates people who build real income from people who give up too early.</div>
       </div>
     </div>
     <div class="step-row">
       <div class="step-row-num">5</div>
       <div class="step-row-content">
         <div class="step-row-title">The Safe Exit Formula — The 3 Conditions That Say "Now It's Time"</div>
-        <div class="step-row-desc">The exact checklist you complete <em>before</em> handing in your notice. <strong>Leave too early and fail. Leave at the right moment and never look back.</strong> This step is what makes the whole roadmap work.</div>
+        <div class="step-row-desc">The exact checklist you complete before handing in your notice. <strong>Leave at the right moment and never look back.</strong></div>
       </div>
     </div>
   </div>
 
-  <!-- 4. MORE DISCOVER CARDS -->
+  <!-- DISCOVER -->
   <div class="reveal" style="margin-bottom:16px;">
-    <div class="section-label">Plus You'll Also <span class="yellow">Discover...</span></div>
+    <div class="section-label">Plus You'll Also <span class="blue">Discover...</span></div>
   </div>
   <div class="discover-grid reveal">
     <div class="discover-card">
       <div class="dc-num">01</div>
       <div class="dc-title">The #1 Mistake That Keeps People Stuck in Their Job for Years</div>
-      <div class="dc-desc">It's not lack of skill or bad luck. It's one decision made wrong at the very beginning. <strong>We show you exactly what it is</strong> so you can sidestep it entirely.</div>
+      <div class="dc-desc">It's one decision made wrong at the very beginning. <strong>We show you exactly what it is</strong> so you can sidestep it entirely.</div>
     </div>
     <div class="discover-card">
       <div class="dc-num">02</div>
       <div class="dc-title">Why You Don't Need a Huge Following to Make $3K/Month</div>
-      <div class="dc-desc">The math of reaching $3K/month requires <strong>fewer than 10 clients</strong> for most service models. We show you the exact numbers that will change how you think about "audience."</div>
+      <div class="dc-desc">The math requires <strong>fewer than 10 clients</strong> for most service models. Numbers that will change how you think about "audience."</div>
     </div>
     <div class="discover-card">
       <div class="dc-num">03</div>
       <div class="dc-title">The "Safe Exit" Checklist — Never Quit Too Early Again</div>
-      <div class="dc-desc">3 specific conditions that must all be true before you quit. <strong>When all 3 are green, you leave with confidence.</strong> Not before. This alone is worth downloading the roadmap for.</div>
+      <div class="dc-desc">3 specific conditions that must all be true before you quit. <strong>When all 3 are green, you leave with confidence.</strong></div>
     </div>
     <div class="discover-card">
       <div class="dc-num">04</div>
-      <div class="dc-title">How to Price Your Offer So Clients Say Yes (And You Don't Undersell)</div>
-      <div class="dc-desc">The single biggest income killer for new online business owners is underpricing. <strong>The pricing formula inside will likely double your rates</strong> from where you'd start on your own.</div>
+      <div class="dc-title">How to Price Your Offer So Clients Say Yes</div>
+      <div class="dc-desc">Underpricing is the most common income killer. <strong>The pricing formula inside will likely double your rates</strong> from where you'd start on your own.</div>
     </div>
   </div>
 
-  <!-- 5. SOCIAL PROOF -->
+  <!-- SOCIAL PROOF -->
   <div class="proof-section reveal">
-    <div class="section-label" style="margin-bottom:20px;">What People Are <span class="yellow">Saying</span></div>
+    <div class="section-label" style="margin-bottom:20px;">What People Are <span class="blue">Saying</span></div>
     <div class="proof-grid">
       <div class="proof-card">
         <div class="proof-stars">★★★★★</div>
-        <div class="proof-quote">"I downloaded this at 11pm on a Tuesday and stayed up until 1am reading it. By the following Friday I had sent my first outreach messages. Two weeks later I had my first $350 client. This roadmap is the real thing."</div>
+        <div class="proof-quote">"I downloaded this at 11pm on a Tuesday and stayed up until 1am reading it. Two weeks later I had my first $350 client. This roadmap is the real thing."</div>
         <div class="proof-author">Marcus T. <span>— Social media manager, Chicago</span></div>
       </div>
       <div class="proof-card">
         <div class="proof-stars">★★★★★</div>
-        <div class="proof-quote">"I'd been 'thinking about' starting something for 2 years. This roadmap made me realise I was stuck in the thinking phase because I had no clear next step. Step 1 gave me that. I quit my job 5 months later."</div>
+        <div class="proof-quote">"I'd been 'thinking about' starting something for 2 years. This roadmap made me realise I was stuck in the thinking phase. Step 1 gave me that. I quit my job 5 months later."</div>
         <div class="proof-author">Priya K. <span>— Freelance writer, London</span></div>
       </div>
       <div class="proof-card">
         <div class="proof-stars">★★★★★</div>
-        <div class="proof-quote">"The Safe Exit Formula in Step 5 is what convinced my wife this wasn't crazy. We went through the 3 conditions together and when all 3 were met, she was the one who told me to hand in my notice."</div>
+        <div class="proof-quote">"The Safe Exit Formula in Step 5 is what convinced my wife this wasn't crazy. When all 3 conditions were met, she was the one who told me to hand in my notice."</div>
         <div class="proof-author">Daniel R. <span>— Video editor, Austin TX</span></div>
       </div>
     </div>
   </div>
 
-  <!-- 6. URGENCY -->
+  <!-- URGENCY -->
   <div class="urgency-bar reveal">
-    <div class="urgency-text">⚡ This Is <span class="yellow">100% Free</span> — But You Have To Actually Download It</div>
-    <div class="urgency-sub">Most people who don't opt in right now never come back. The people who change their lives are the ones who take the first step today — not "sometime soon."</div>
+    <div class="urgency-text">⚡ This Is <span class="bold">100% Free</span> — But You Have To Actually Download It</div>
+    <div class="urgency-sub">Most people who don't opt in right now never come back. The people who change their lives take the first step today — not "sometime soon."</div>
   </div>
 
-  <!-- 7. BOTTOM OPT-IN FORM -->
+  <!-- BOTTOM FORM -->
   <div class="bottom-optin reveal">
     <div class="bo-header">
       <div class="bo-header-pre">Yes — I Want The Free Roadmap</div>
-      <div class="bo-header-title">Get The 9-to-5 Exit Roadmap<br><span class="red">Completely Free</span> — Right Now</div>
+      <div class="bo-header-title">Get The 9-to-5 Exit Roadmap<br><span class="blue">Completely Free</span> — Right Now</div>
     </div>
     <div class="bo-body">
       <div class="bo-value-stack">
@@ -1261,65 +1356,47 @@ body {
       <div class="success-state" id="success2" style="background:transparent;">
         <span class="ss-icon">✅</span>
         <div class="ss-title">You're In! Check Your Inbox.</div>
-        <p class="ss-sub">Your roadmap is on its way. <strong>Follow @businesswealthfocus on Instagram</strong> for daily content to back up every step of the roadmap.</p>
+        <p class="ss-sub">Your roadmap is on its way. <strong>Follow @businesswealthfocus on Instagram</strong> for daily content to back up every step.</p>
       </div>
 
       <div class="bo-micro" id="boMicro">🔒 Secure & private. We will never share your information with anyone.</div>
     </div>
   </div>
 
-  <!-- 8. FAQ — Brunson always handles objections explicitly -->
+  <!-- FAQ -->
   <div class="faq-section reveal">
-    <div class="section-label" style="margin-bottom:20px;">Got <span class="yellow">Questions?</span></div>
+    <div class="section-label" style="margin-bottom:20px;">Got <span class="blue">Questions?</span></div>
 
     <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Is this actually free? What's the catch?
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-a">Yes — 100% free. No credit card. No trial. The roadmap is yours to keep forever. In exchange for your email, you'll occasionally receive useful wealth and business content from @businesswealthfocus. You can unsubscribe with one click at any time. That's the only "catch" — and it's not much of one.</div>
+      <div class="faq-q" onclick="toggleFaq(this)">Is this actually free? What's the catch?<span class="faq-toggle">+</span></div>
+      <div class="faq-a">Yes — 100% free. No credit card. No trial. The roadmap is yours to keep forever. You'll occasionally receive useful wealth and business content from @businesswealthfocus. You can unsubscribe with one click at any time.</div>
     </div>
-
     <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        I've tried building online income before and it didn't work. Why will this be different?
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-a">Most online income attempts fail because they skip Step 1 (picking one thing) and go straight to Step 4 (trying to get clients). <strong>The sequence matters more than the tactics.</strong> This roadmap is specifically built around the order of operations — which is exactly what most "how to make money online" content gets wrong.</div>
+      <div class="faq-q" onclick="toggleFaq(this)">I've tried building online income before and it didn't work. Why will this be different?<span class="faq-toggle">+</span></div>
+      <div class="faq-a">Most attempts fail because they skip Step 1 and go straight to Step 4. <strong>The sequence matters more than the tactics.</strong> This roadmap is specifically built around the order of operations — which is what most content gets wrong.</div>
     </div>
-
     <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        How long will it take me to make $3K/month?
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-a">Realistically: 90–180 days of consistent execution for most people. Some do it faster (we've seen people hit $1K/month in 30 days), some slower. It depends entirely on your starting skills, available time, and consistency. The roadmap won't lie to you — it gives you the honest timeline alongside the honest steps.</div>
+      <div class="faq-q" onclick="toggleFaq(this)">How long will it take me to make $3K/month?<span class="faq-toggle">+</span></div>
+      <div class="faq-a">Realistically: 90–180 days of consistent execution for most people. Some do it faster, some slower. It depends on your starting skills, available time, and consistency. The roadmap gives you the honest timeline alongside the honest steps.</div>
     </div>
-
     <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        I only have 1–2 hours a day. Will this still work?
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-a">Yes — and the roadmap is specifically designed around this constraint. The whole point is to build income <em>while</em> you're still employed. 1–2 focused hours per day is enough to execute Steps 1–3. It just takes a few more weeks than someone with more time. Consistency beats volume every time.</div>
+      <div class="faq-q" onclick="toggleFaq(this)">I only have 1–2 hours a day. Will this still work?<span class="faq-toggle">+</span></div>
+      <div class="faq-a">Yes — the roadmap is specifically designed around this constraint. The whole point is to build income while you're still employed. 1–2 focused hours per day is enough to execute Steps 1–3.</div>
     </div>
-
     <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        I don't have a skill to sell. Can I still use this?
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-a">Everyone has a skill. Most people just don't recognise theirs as sellable because they've had it so long it feels "normal" to them. Inside the roadmap, the Niche Selector walks you through a process that has helped people identify valuable skills from jobs they've had for years — skills like organisation, communication, research, admin, writing, and dozens more that businesses pay well for.</div>
+      <div class="faq-q" onclick="toggleFaq(this)">I don't have a skill to sell. Can I still use this?<span class="faq-toggle">+</span></div>
+      <div class="faq-a">Everyone has a skill. Most people don't recognise theirs as sellable because they've had it so long it feels normal. The Niche Selector inside the roadmap helps you identify valuable skills from your existing experience — writing, organisation, communication, research, and dozens more that businesses pay well for.</div>
     </div>
   </div>
 
-</div><!-- /body-section -->
+</div>
 
-<!-- ══════════════════════════════════════
-  FOOTER
-══════════════════════════════════════ -->
+<!-- FOOTER -->
 <div class="page-footer">
-  <div class="footer-logo">@BUSINESSWEALTHFOCUS</div>
+  <div class="footer-logo">
+    <div class="footer-logo-circle">BWF</div>
+    <div class="footer-logo-name">BUSINESS WEALTH FOCUS</div>
+  </div>
   <p class="footer-text">Helping side hustlers and employees build their first online income stream so they can leave their job — on their own terms, on their own timeline.</p>
   <div class="footer-links">
     <a href="#">Privacy Policy</a>
@@ -1327,11 +1404,10 @@ body {
     <a href="#">Unsubscribe</a>
     <a href="https://instagram.com/businesswealthfocus" target="_blank">Instagram</a>
   </div>
-  <p style="margin-top:14px; font-size:11px; color:#555;">© 2025 businesswealthfocus · Results vary. Income claims represent potential outcomes, not guarantees. Individual results depend on effort, skill, and market conditions.</p>
+  <p style="margin-top:14px; font-size:11px; color:#444;">© 2025 businesswealthfocus · Results vary. Income claims represent potential outcomes, not guarantees.</p>
 </div>
 
 <script>
-// ── FORM HANDLER ──
 function handleOptIn(formId, successId) {
   const isForm2 = formId === 'formBody2';
   const nameEl  = document.getElementById(isForm2 ? 'fn2' : 'fn1');
@@ -1339,13 +1415,11 @@ function handleOptIn(formId, successId) {
   const name    = nameEl.value.trim();
   const email   = emailEl.value.trim();
 
-  // Validation
   let valid = true;
-  if (!name) { nameEl.style.borderColor  = '#D42B2B'; valid = false; }
-  if (!email || !email.includes('@')) { emailEl.style.borderColor = '#D42B2B'; valid = false; }
+  if (!name)  { nameEl.style.borderColor  = '#1A8FE3'; valid = false; }
+  if (!email || !email.includes('@')) { emailEl.style.borderColor = '#1A8FE3'; valid = false; }
   if (!valid) return;
 
-  // Show success
   const formEl    = document.getElementById(formId);
   const successEl = document.getElementById(successId);
   const microEl   = document.getElementById('boMicro');
@@ -1354,20 +1428,19 @@ function handleOptIn(formId, successId) {
   successEl.style.display = 'block';
   if (microEl) microEl.style.display = 'none';
 
-  // Here: connect to your email service
-  // e.g. Systeme.io, ConvertKit, Beehiiv API
-  fetch('https://assets.mailerlite.com/jsonp/2110679/forms/179758995028838085/subscribe', {  
-  method: 'POST',
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  body: `fields[name]=${encodeURIComponent(name)}&fields[email]=${encodeURIComponent(email)}`
-});}
+  // Replace with your MailerLite endpoint:
+  fetch('https://assets.mailerlite.com/jsonp/2110679/forms/179758995028838085/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `fields[name]=${encodeURIComponent(name)}&fields[email]=${encodeURIComponent(email)}`
+  });
+}
 
-// Reset border on focus
 document.querySelectorAll('.field-input').forEach(el => {
   el.addEventListener('focus', () => el.style.borderColor = '');
 });
 
-// ── SCROLL REVEAL ──
+// Scroll reveal
 const revealEls = document.querySelectorAll('.reveal');
 const revealObs = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
@@ -1379,7 +1452,7 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 revealEls.forEach(el => revealObs.observe(el));
 
-// ── FAQ TOGGLE ──
+// FAQ
 function toggleFaq(el) {
   const item = el.closest('.faq-item');
   const isOpen = item.classList.contains('open');
